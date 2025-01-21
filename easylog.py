@@ -26,21 +26,4 @@ for subdir, dirs, files in os.walk(input_folder):
         else:
             pprint(f"{file} is not an EasyLog data file")
 
-        
-sys.exit()
-data = pd.read_fwf('input_data/easylog_data/ELOG0867.TXT')
-df = data.drop(index=[0,1,2,3]).reset_index(drop=True)
-df.columns = ['timestamp', 'air_temp', 'vbatt', 'in_rad']
-
-#df['datetime'] = pd.to_datetime(df['datetime'], format='%d.%m.%Y %H:%M:%S')
-#df['date'] = df['datetime'].dt.date
-#df['time'] = df['datetime'].dt.time
-
-
-#df.drop('datetime', axis=1, inplace=True)
-df = df[['timestamp', 'air_temp', 'in_rad', 'vbatt']]
-
-df.to_csv(r'output_data/easylog/test.csv', sep = ',', index=False)
-
-pprint(df)
 
